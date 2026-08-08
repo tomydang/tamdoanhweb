@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tâm Doanh Group — Đối tác chuẩn hóa & phát triển doanh nghiệp</title>
+<style>
+  :root{
+    --navy:#0b2545;
+    --navy-2:#13315c;
+    --gold:#c8973c;
+    --gold-light:#e8c98a;
+    --ink:#1b2430;
+    --muted:#5b6572;
+    --line:#e6e8ec;
+    --bg:#ffffff;
+    --bg-soft:#f6f7f9;
+    --radius:14px;
+    --shadow:0 8px 24px rgba(11,37,69,0.08);
+    --maxw:1180px;
+    --orange:#e2792a;
+  }
+  .brand-up{color:var(--orange);}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.55;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  img{max-width:100%; display:block;}
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0;
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-weight:700; font-size:19px; color:var(--navy);}
+  .brand .mark{
+    width:34px; height:34px; border-radius:8px;
+    background:linear-gradient(135deg,var(--navy),var(--gold));
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font-size:15px; font-weight:800;
+  }
+  nav.links{display:flex; align-items:center; gap:20px;}
+  nav.links a{font-size:14.5px; font-weight:600; color:var(--navy-2); padding:6px 0; border-bottom:2px solid transparent;}
+  nav.links a:hover{border-bottom-color:var(--gold);}
+  .lang-toggle{
+    display:flex; border:1px solid var(--line); border-radius:20px; overflow:hidden; margin-left:8px;
+  }
+  .lang-toggle button{
+    border:none; background:transparent; padding:6px 14px; font-size:13px; font-weight:700;
+    cursor:pointer; color:var(--muted);
+  }
+  .lang-toggle button.active{background:var(--navy); color:#fff;}
+  .menu-btn{display:none; background:none; border:none; font-size:24px; cursor:pointer; color:var(--navy);}
+  .switcher-wrap{position:relative; margin-left:4px;}
+  .switcher-btn{display:flex; align-items:center; gap:8px; color:var(--navy); font-size:13.5px; font-weight:700; white-space:nowrap; border:1px solid var(--line); padding:8px 14px; border-radius:20px; cursor:pointer; transition:.2s;}
+  .switcher-btn:hover{border-color:var(--gold);}
+  .switcher-btn svg{flex:none;}
+  .switcher-menu{position:absolute; top:100%; right:0; margin-top:10px; width:290px; max-height:70vh; overflow-y:auto; background:#fff; border-radius:var(--radius); box-shadow:var(--shadow); padding:10px; opacity:0; visibility:hidden; transform:translateY(8px); transition:.22s ease; z-index:60;}
+  .switcher-wrap:hover .switcher-menu, .switcher-wrap:focus-within .switcher-menu{opacity:1; visibility:visible; transform:translateY(0);}
+  .switcher-group-label{font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); padding:10px 10px 4px;}
+  .switcher-menu a{display:block; padding:8px 10px; border-radius:8px; font-size:13.5px; font-weight:600; color:var(--ink); border-bottom:none;}
+  .switcher-menu a:hover{background:var(--bg-soft); border-bottom:none;}
+  .switcher-divider{height:1px; background:var(--line); margin:8px 4px;}
+
+  /* Hero */
+  .hero{
+    position:relative; overflow:hidden;
+    background:radial-gradient(circle at 80% -10%, rgba(200,151,60,0.15), transparent 55%),
+               linear-gradient(180deg,#0b2545 0%,#122f57 100%);
+    color:#fff;
+    padding:96px 0 110px;
+  }
+  .hero-photo{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.22; z-index:0;}
+  .hero > .wrap{position:relative; z-index:1;}
+  .eyebrow{
+    display:inline-block; font-size:13px; font-weight:700; letter-spacing:.06em;
+    color:var(--gold-light); text-transform:uppercase; margin-bottom:18px;
+    border:1px solid rgba(232,201,138,0.4); padding:6px 14px; border-radius:20px;
+  }
+  .hero h1{font-size:44px; line-height:1.2; margin:0 0 20px; max-width:720px; font-weight:800;}
+  .hero h1 .word{display:inline-block; opacity:0; transform:translateY(18px); animation:wordIn .55s cubic-bezier(.2,.8,.2,1) forwards;}
+  .hero h1 .word:nth-child(1){animation-delay:.05s;}
+  .hero h1 .word:nth-child(2){animation-delay:.11s;}
+  .hero h1 .word:nth-child(3){animation-delay:.17s;}
+  .hero h1 .word:nth-child(4){animation-delay:.23s;}
+  .hero h1 .word:nth-child(5){animation-delay:.29s;}
+  .hero h1 .word:nth-child(6){animation-delay:.35s;}
+  .hero h1 .word:nth-child(7){animation-delay:.41s;}
+  .hero h1 .word:nth-child(8){animation-delay:.47s;}
+  .hero h1 .word:nth-child(9){animation-delay:.53s;}
+  .hero h1 .word:nth-child(10){animation-delay:.59s;}
+  .hero h1 .word:nth-child(11){animation-delay:.65s;}
+  .hero h1 .word:nth-child(12){animation-delay:.71s;}
+  .hero h1 .word:nth-child(13){animation-delay:.77s;}
+  @keyframes wordIn{to{opacity:1; transform:translateY(0);}}
+  .hero p.lead{font-size:18px; color:#c9d3e0; max-width:600px; margin:0 0 34px;}
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; padding:13px 26px; border-radius:10px; font-weight:700; font-size:15px;
+    cursor:pointer; border:1px solid transparent;
+  }
+  .btn-primary{background:var(--gold); color:var(--navy);}
+  .btn-primary:hover{background:var(--gold-light);}
+  .btn-ghost{border-color:rgba(255,255,255,0.35); color:#fff;}
+  .btn-ghost:hover{background:rgba(255,255,255,0.08);}
+
+  /* Sections */
+  section{padding:84px 0;}
+  .section-head{max-width:640px; margin:0 auto 48px; text-align:center;}
+  .section-head .tag{font-size:13px; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:.05em;}
+  .section-head h2{font-size:32px; margin:10px 0 12px; color:var(--navy); font-weight:800;}
+  .section-head p{color:var(--muted); font-size:16px;}
+  .soft{background:var(--bg-soft);}
+
+  /* Logo slots — placeholders for uploading real member/ecosystem logos */
+  .logo-slot{
+    border:1px dashed #c7cedb; border-radius:12px; background:var(--bg-soft);
+    display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative;
+  }
+  .logo-slot img{max-width:78%; max-height:78%; object-fit:contain; display:block;}
+  .logo-fallback{display:none; flex-direction:column; align-items:center; gap:5px; color:#9aa4b2; font-weight:700;}
+  .logo-fallback .plus{font-size:24px; line-height:1;}
+  .logo-fallback .txt{font-size:11px; letter-spacing:.03em; text-transform:uppercase;}
+  .pillar-card .logo-slot{width:96px; height:96px; margin-bottom:20px;}
+  .member-card .logo-slot{width:56px; height:56px; flex:0 0 56px;}
+  .member-card .logo-slot .logo-fallback .plus{font-size:15px;}
+  .member-card .logo-slot .logo-fallback .txt{font-size:8px;}
+
+  /* Ecosystem */
+  .pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:1040px; margin:0 auto;}
+  .pillar-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    padding:32px 26px; box-shadow:var(--shadow);
+  }
+  .pillar-card h3{font-size:19px; margin:0 0 10px; color:var(--navy);}
+  .pillar-card p{color:var(--muted); font-size:14.5px; margin:0 0 14px;}
+  .pillar-card .role{font-size:12.5px; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:.04em;}
+
+  /* Crown Up program spotlight */
+  .crownup-section{background:#08070a; color:#f4efe6; padding:80px 0; position:relative; overflow:hidden;}
+  .crownup-section::before{content:""; position:absolute; inset:0; background:radial-gradient(circle at 85% 10%, rgba(226,121,42,0.14), transparent 55%);}
+  .crownup-inner{position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:52px; align-items:center;}
+  .crownup-section .eyebrow-dark{display:inline-block; font-size:13px; font-weight:700; letter-spacing:.06em; color:var(--orange); text-transform:uppercase; margin-bottom:16px; border:1px solid rgba(226,121,42,0.4); padding:6px 14px; border-radius:20px;}
+  .crownup-section h2{font-size:30px; font-weight:800; margin:0 0 18px; color:#fff;}
+  .crownup-section p{color:rgba(244,239,230,0.72); font-size:15.5px; margin:0 0 18px;}
+  .crownup-note{font-size:13.5px; color:rgba(244,239,230,0.55); border-left:2px solid var(--orange); padding-left:14px; margin:22px 0 26px;}
+  .crownup-list{list-style:none; margin:0 0 26px; padding:0; display:flex; flex-direction:column; gap:12px;}
+  .crownup-list li{display:flex; gap:10px; align-items:flex-start; font-size:14.5px; color:rgba(244,239,230,0.85);}
+  .crownup-list li svg{flex:none; margin-top:2px; color:var(--orange);}
+  .crownup-stats{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .crownup-stat{background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:var(--radius); padding:22px 18px; text-align:center;}
+  .crownup-stat b{display:block; font-size:26px; color:var(--orange); font-weight:800; line-height:1.1;}
+  .crownup-stat span{font-size:12.5px; color:rgba(244,239,230,0.65); margin-top:8px; display:block;}
+  .crownup-photo{border-radius:var(--radius); overflow:hidden; box-shadow:0 20px 50px -20px rgba(0,0,0,0.6); margin-bottom:20px;}
+  .crownup-photo img{width:100%; height:280px; object-fit:cover; display:block;}
+  @media (max-width:900px){
+    .crownup-inner{grid-template-columns:1fr;}
+    .crownup-photo{order:-1;}
+  }
+
+  /* About */
+  .about-grid{display:grid; grid-template-columns:1.15fr 1fr; gap:52px; align-items:center;}
+  .about-text p{color:var(--muted); font-size:15.5px; margin:0 0 16px;}
+  .about-stats{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  .about-photo{grid-column:1/-1; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);}
+  .about-photo img{width:100%; height:190px; object-fit:cover; display:block;}
+  .stat-card{background:var(--bg-soft); border:1px solid var(--line); border-radius:var(--radius); padding:26px 20px; text-align:center;}
+  .stat-card b{display:block; font-size:34px; color:var(--navy); font-weight:800; line-height:1;}
+  .stat-card span{font-size:13px; color:var(--muted); margin-top:8px; display:block;}
+
+  /* Team */
+  .team-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  .person-card{border:1px solid var(--line); border-radius:var(--radius); padding:26px 22px; background:#fff; text-align:center;}
+  .avatar{
+    position:relative; overflow:hidden;
+    width:64px; height:64px; border-radius:50%; margin:0 auto 16px;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:20px; color:#fff;
+    background:linear-gradient(135deg,var(--navy),var(--gold));
+  }
+  .avatar img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:50%;}
+  .person-card h4{font-size:15.5px; margin:0 0 4px; color:var(--navy);}
+  .person-card .role{font-size:12.5px; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:.03em; display:block; margin-bottom:10px;}
+  .person-card p{font-size:13px; color:var(--muted); margin:0;}
+  .note{font-size:12.5px; color:var(--muted); font-style:italic; text-align:center; margin:28px 0 0;}
+
+  /* Projects */
+  .projects-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .project-card{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:#fff;}
+  .project-thumb{position:relative; overflow:hidden; height:110px; display:flex; align-items:center; justify-content:center; font-size:30px;}
+  .project-thumb.p1{background:linear-gradient(135deg,var(--navy),var(--navy-2));}
+  .project-thumb.p2{background:linear-gradient(135deg,var(--gold),#a97c28);}
+  .project-thumb.p3{background:linear-gradient(135deg,var(--navy-2),#0e4a7a);}
+  .project-thumb img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:2;}
+  .project-thumb svg.thumb-icon{position:relative; z-index:1; width:34px; height:34px; color:#fff;}
+  .project-body{padding:22px;}
+  .project-tag{font-size:11.5px; font-weight:800; color:var(--gold); text-transform:uppercase; letter-spacing:.05em;}
+  .project-card h4{font-size:15.5px; margin:10px 0 8px; color:var(--navy); line-height:1.4;}
+  .project-card p{font-size:13.5px; color:var(--muted); margin:0;}
+  .project-stat{margin-top:16px; padding-top:14px; border-top:1px dashed var(--line);}
+  .project-stat b{display:block; font-size:16px; color:var(--navy);}
+  .project-stat span{font-size:12px; color:var(--muted);}
+
+  /* Service journey — presented as numbered arrow cells, 2 rows of 4 */
+  .journey-intro{max-width:680px; margin:0 auto 12px; text-align:center;}
+  .flow-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:12px 8px; margin-top:44px;}
+  .flow-turn{grid-column:1/-1; display:flex; align-items:center; justify-content:center; color:var(--gold-dark); margin:-2px 0;}
+  .flow-turn svg{width:20px; height:20px;}
+  .flow-cell{
+    position:relative; background:#fff; border:2px solid var(--gold); color:var(--navy);
+    clip-path:polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%, 16px 50%);
+    padding:20px 24px 16px 26px; display:flex; flex-direction:column; gap:10px; min-height:112px;
+  }
+  .flow-cell.bookend{background:var(--navy); border-color:var(--navy); color:#fff;}
+  .flow-icon{
+    flex:none; width:30px; height:30px; border-radius:50%; background:var(--bg-soft); color:var(--navy);
+    display:flex; align-items:center; justify-content:center; position:relative;
+  }
+  .flow-cell.bookend .flow-icon{background:rgba(255,255,255,0.16); color:#fff;}
+  .flow-icon svg{width:15px; height:15px;}
+  .flow-icon.dot-dual{gap:1px;}
+  .flow-icon .step-num{
+    position:absolute; bottom:-3px; right:-3px; width:15px; height:15px; border-radius:50%;
+    background:var(--navy); color:#fff; font-size:8.5px; font-weight:800;
+    display:flex; align-items:center; justify-content:center; border:2px solid #fff;
+  }
+  .flow-cell.bookend .flow-icon .step-num{border-color:var(--navy);}
+  .flow-cell h4{font-size:13.5px; margin:0; line-height:1.35; color:inherit;}
+  .flow-cell .stop-caption{font-size:11px; margin:0; line-height:1.4; opacity:.8; font-style:italic;}
+
+  /* Testimonials */
+  .testimonials-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .testimonial-card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:28px 26px; display:flex; flex-direction:column;}
+  .testimonial-card .stars{color:var(--gold); font-size:14px; margin-bottom:14px; letter-spacing:2px;}
+  .testimonial-card .quote{font-size:14.5px; color:var(--ink); font-style:italic; margin:0 0 22px; line-height:1.65; flex:1;}
+  .testimonial-person{display:flex; align-items:center; gap:12px;}
+  .testimonial-person .avatar{width:44px; height:44px; font-size:14px; margin:0; flex:0 0 44px;}
+  .testimonial-person h5{margin:0; font-size:14px; color:var(--navy);}
+  .testimonial-person span{font-size:12.5px; color:var(--muted);}
+
+  /* Member groups — compact accordion of category tiles */
+  .group-tabs{display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-bottom:6px;}
+  .group-tile{
+    --gc: var(--navy);
+    display:flex; flex-direction:column; align-items:center; text-align:center; gap:8px;
+    border:1.5px solid var(--line); border-top:4px solid var(--gc); border-radius:12px; background:#fff; padding:15px 10px;
+    cursor:pointer; transition:border-color .15s ease, box-shadow .15s ease, background .15s ease, transform .15s ease;
+    font-family:inherit;
+  }
+  .group-tile:hover{box-shadow:var(--shadow); transform:translateY(-2px);}
+  .group-tile.active{border-color:var(--gc); background:var(--gc); box-shadow:var(--shadow);}
+  .group-tile .group-icon{
+    width:40px; height:40px; border-radius:50%; background:var(--gc); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 3px 8px rgba(0,0,0,0.18);
+    transition:background .15s ease, color .15s ease;
+  }
+  .group-tile .group-icon svg{width:20px; height:20px;}
+  .group-tile.active .group-icon{background:rgba(255,255,255,0.22); color:#fff;}
+  .group-tile .group-name{font-size:12px; font-weight:700; color:var(--navy); line-height:1.35;}
+  .group-tile.active .group-name{color:#fff;}
+  .group-tile .group-count{font-size:10.5px; color:var(--muted); font-weight:600;}
+  .group-tile.active .group-count{color:rgba(255,255,255,0.85);}
+  .group-hint{text-align:center; font-size:12px; color:var(--muted); margin:0 0 30px;}
+  .group-panel{margin-top:8px;}
+  .group-panel-inner{
+    border:1px solid var(--line); border-left:5px solid var(--gc, var(--navy)); border-radius:var(--radius); background:var(--bg-soft);
+    padding:24px; animation:panelIn .35s ease;
+  }
+  @keyframes panelIn{from{opacity:0; transform:translateY(-8px);} to{opacity:1; transform:translateY(0);}}
+  .group-panel-head{display:flex; align-items:center; gap:14px; margin-bottom:16px;}
+  .group-panel-head .group-icon{width:44px; height:44px; flex:0 0 44px; border-radius:50%; background:var(--gc, var(--navy)); color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 3px 8px rgba(0,0,0,0.18);}
+  .group-panel-head .group-icon svg{width:22px; height:22px;}
+  .group-panel-head h4{font-size:16px; color:var(--navy); margin:0;}
+  .group-panel-head p{font-size:12.5px; color:var(--muted); margin:2px 0 0;}
+  .group-panel-note{
+    font-size:12px; color:var(--navy-2); background:#eef0f4; border:1px dashed #c7cedb;
+    border-radius:8px; padding:10px 14px; margin-bottom:16px; line-height:1.5;
+  }
+  .group-panel .members-grid{grid-template-columns:repeat(2,1fr);}
+
+  /* Members grid */
+  .members-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  .member-card{
+    display:flex; align-items:flex-start; gap:12px;
+    border:1px solid var(--line); border-radius:var(--radius); padding:16px;
+    transition:transform .15s ease, box-shadow .15s ease; background:#fff; cursor:pointer;
+  }
+  .member-card:hover{transform:translateY(-3px); box-shadow:var(--shadow);}
+  .member-card:hover .arrow{transform:translateX(3px);}
+  .member-card .card-content{flex:1; min-width:0;}
+  .member-card h4{font-size:14.5px; margin:0 0 5px; color:var(--navy); line-height:1.3;}
+  .member-card p{font-size:12.5px; color:var(--muted); margin:0 0 10px; line-height:1.45;}
+  .member-card .foot{display:flex; align-items:center; justify-content:space-between; font-size:12px;}
+  .member-card .domain{color:var(--gold); font-weight:700;}
+  .member-card .arrow{font-weight:800; color:var(--navy); transition:transform .15s ease;}
+
+  /* News */
+  .news-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .news-card{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:#fff;}
+  .news-thumb{position:relative; overflow:hidden; height:150px; background:linear-gradient(135deg,var(--navy),var(--navy-2));}
+  .news-thumb img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .news-body{padding:20px;}
+  .news-cat{font-size:11.5px; font-weight:800; color:var(--gold); text-transform:uppercase; letter-spacing:.05em;}
+  .news-card h4{font-size:16px; margin:10px 0 8px; color:var(--navy); line-height:1.4;}
+  .news-card p{font-size:13.5px; color:var(--muted); margin:0;}
+
+  /* CTA band */
+  .cta-band{
+    position:relative; overflow:hidden;
+    background:linear-gradient(135deg,var(--navy),var(--navy-2));
+    color:#fff; border-radius:20px; padding:56px 48px;
+    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+  }
+  .cta-band-photo{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.2; z-index:0;}
+  .cta-band > *{position:relative; z-index:1;}
+  .cta-band h3{font-size:26px; margin:0 0 8px;}
+  .cta-band p{color:#c9d3e0; margin:0; font-size:15px;}
+
+  /* Ecosystem banner photo */
+  .ecosystem-photo{border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); margin-bottom:36px;}
+  .ecosystem-photo img{width:100%; height:220px; object-fit:cover; display:block;}
+
+  footer{background:var(--navy); color:#c9d3e0; padding:60px 0 30px; font-size:14px;}
+  .foot-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:32px; margin-bottom:40px;}
+  footer h5{color:#fff; font-size:14px; margin:0 0 16px; letter-spacing:.03em;}
+  footer ul{list-style:none; padding:0; margin:0;}
+  footer li{margin-bottom:10px;}
+  footer a:hover{color:var(--gold-light);}
+  .foot-logo-slot{width:150px; height:64px; margin-bottom:18px;}
+  .foot-logo-slot .logo-fallback .plus{font-size:18px;}
+  .foot-logo-slot .logo-fallback .txt{font-size:10px;}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,0.12); padding-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:12.5px; color:#8ea0bb;}
+
+  /* Slim cross-link bar to Tâm Doanh Insight */
+  .td-masthead{background:var(--navy); color:rgba(255,255,255,0.78); font-size:12.5px;}
+  .td-masthead-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:8px 24px; flex-wrap:wrap;}
+  .td-masthead-tag{font-weight:600; color:rgba(255,255,255,0.55);}
+  .td-masthead-link{display:inline-flex; align-items:center; gap:6px; font-weight:700; color:var(--gold-light);}
+  .td-masthead-link svg{width:11px; height:11px;}
+  .td-masthead-link:hover{color:#fff;}
+  @media (max-width:640px){ .td-masthead-tag{display:none;} }
+
+  [data-en]{display:none;}
+  body.lang-en [data-vi]{display:none;}
+  body.lang-en [data-en]{display:inline;}
+  body.lang-en [data-en].block{display:block;}
+
+  @media (max-width:1100px){
+    .members-grid{grid-template-columns:repeat(3,1fr);}
+    .group-tabs{grid-template-columns:repeat(3,1fr);}
+    .switcher-wrap{display:none;}
+  }
+  @media (max-width:900px){
+    .pillars, .members-grid, .news-grid, .team-grid, .projects-grid, .testimonials-grid{grid-template-columns:repeat(2,1fr);}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    .group-panel .members-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:640px){
+    nav.links{display:none;}
+    .switcher-wrap{display:none;}
+    .menu-btn{display:block;}
+    .hero h1{font-size:32px;}
+    .pillars, .members-grid, .news-grid, .team-grid, .projects-grid, .testimonials-grid, .about-stats{grid-template-columns:1fr;}
+    .group-tabs{grid-template-columns:repeat(2,1fr);}
+    .foot-grid{grid-template-columns:1fr;}
+    .flow-grid{grid-template-columns:1fr; gap:8px;}
+    .flow-turn{display:none;}
+    .flow-cell{clip-path:none; border-radius:12px; flex-direction:row; align-items:center; padding:14px 16px; min-height:auto;}
+    .cta-band{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<div class="td-masthead">
+  <div class="wrap td-masthead-inner">
+    <span class="td-masthead-tag"><span data-vi>Công ty TNHH Tâm Doanh Group</span><span data-en>Tam Doanh Group Co., Ltd.</span></span>
+    <a class="td-masthead-link" href="insight.html">
+      <span data-vi>Đọc phân tích trên Tâm Doanh Insight</span><span data-en>Read analysis on Tâm Doanh Insight</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+    </a>
+  </div>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand"><span class="mark">TD</span> Tâm Doanh Group</div>
+    <nav class="links">
+      <a href="#home"><span data-vi>Trang chủ</span><span data-en>Home</span></a>
+      <a href="#about"><span data-vi>Giới thiệu</span><span data-en>About</span></a>
+      <a href="#ecosystem"><span data-vi>Hệ sinh thái</span><span data-en>Ecosystem</span></a>
+      <a href="#members"><span data-vi>Thành viên</span><span data-en>Members</span></a>
+      <a href="#projects"><span data-vi>Dự án</span><span data-en>Projects</span></a>
+      <a href="#testimonials"><span data-vi>Đánh giá</span><span data-en>Testimonials</span></a>
+      <a href="#news"><span data-vi>Tin tức</span><span data-en>News</span></a>
+      <a href="#contact"><span data-vi>Liên hệ</span><span data-en>Contact</span></a>
+    </nav>
+    <div class="switcher-wrap" tabindex="0">
+      <div class="switcher-btn">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>
+        <span><span data-vi>Hệ sinh thái</span><span data-en>Ecosystem</span></span>
+        <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="switcher-menu" id="switcher-menu"></div>
+    </div>
+    <div class="lang-toggle">
+      <button id="btn-vi" class="active" onclick="setLang('vi')">VI</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="menu-btn">☰</button>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <img class="hero-photo" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=70" alt="" onerror="this.style.display='none';">
+  <div class="wrap">
+    <span class="eyebrow"><span data-vi>Hệ sinh thái Tâm Doanh</span><span data-en>The Tâm Doanh Ecosystem</span></span>
+    <h1>
+      <span data-vi><span class="word">Hệ</span> <span class="word">sinh</span> <span class="word">thái</span> <span class="word">đồng</span> <span class="word">hành</span> <span class="word">chuẩn</span> <span class="word">hóa</span> <span class="word">và</span> <span class="word">nâng</span> <span class="word">tầm</span> <span class="word">doanh</span> <span class="word">nghiệp</span> <span class="word">Việt</span></span>
+      <span data-en><span class="word">The</span> <span class="word">Ecosystem</span> <span class="word">Standardizing</span> <span class="word">&amp;</span> <span class="word">Elevating</span> <span class="word">Vietnamese</span> <span class="word">Businesses</span></span>
+    </h1>
+    <p class="lead">
+      <span data-vi>Tâm Doanh Group cùng 20 đơn vị chuyên trách trong 5 khối, đồng hành với doanh nghiệp từ chiến lược, vận hành, pháp lý đến đào tạo và kết nối đầu tư — trong một hệ sinh thái tư vấn toàn diện.</span>
+      <span data-en>Tâm Doanh Group and its 20 specialized units across 5 blocks support businesses across strategy, operations, legal, training, and investment connections — within one comprehensive advisory ecosystem.</span>
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#ecosystem"><span data-vi>Khám phá hệ sinh thái</span><span data-en>Explore the Ecosystem</span></a>
+      <a class="btn btn-ghost" href="insight.html"><span data-vi>Đọc Tâm Doanh Insight</span><span data-en>Read Tâm Doanh Insight</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-text">
+      <span class="tag" style="display:inline-block; font-size:13px; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:.05em; margin-bottom:10px;"><span data-vi>Về chúng tôi</span><span data-en>About Us</span></span>
+      <h2 style="font-size:30px; color:var(--navy); font-weight:800; margin:0 0 18px;">
+        <span data-vi>Hơn một thập kỷ đồng hành cùng doanh nghiệp Việt</span>
+        <span data-en>Over a Decade Supporting Vietnamese Businesses</span>
+      </h2>
+      <p>
+        <span data-vi>Tâm Doanh Group được thành lập với sứ mệnh giúp doanh nghiệp Việt Nam chuẩn hóa vận hành, nâng tầm quản trị và sẵn sàng bước vào giai đoạn tăng trưởng bền vững.</span>
+        <span data-en>Tâm Doanh Group was founded with a mission to help Vietnamese businesses standardize operations, elevate governance, and prepare for sustainable growth.</span>
+      </p>
+      <p>
+        <span data-vi>Từ một đội ngũ tư vấn chiến lược ban đầu, chúng tôi đã phát triển thành hệ sinh thái 20 đơn vị chuyên môn, tổ chức theo mô hình 5 khối (0 → 4), phối hợp cùng các đối tác chiến lược Koru Capital và Crown Audit &amp; Advisory để mang đến giải pháp toàn diện — từ chiến lược, vận hành, pháp lý, kiểm toán độc lập đến kết nối đầu tư.</span>
+        <span data-en>From an initial strategy consulting team, we have grown into an ecosystem of 20 specialized units organized across a 5-block model (0 → 4), working alongside strategic partners Koru Capital and Crown Audit &amp; Advisory to deliver end-to-end solutions — from strategy, operations, and legal to independent audit and investment connections.</span>
+      </p>
+      <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:8px;">
+        <a class="btn btn-primary" href="/company"><span data-vi>Câu chuyện & Tầm nhìn của chúng tôi</span><span data-en>Our Story & Vision</span></a>
+      </div>
+    </div>
+    <div class="about-stats">
+      <div class="about-photo"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=70" alt="" onerror="this.parentElement.style.display='none';"></div>
+      <div class="stat-card"><b>10+</b><span><span data-vi>Năm kinh nghiệm tư vấn</span><span data-en>Years of Advisory Experience</span></span></div>
+      <div class="stat-card"><b>200+</b><span><span data-vi>Doanh nghiệp đã đồng hành</span><span data-en>Businesses Supported</span></span></div>
+      <div class="stat-card"><b>20</b><span><span data-vi>Đơn vị chuyên môn</span><span data-en>Specialized Units</span></span></div>
+      <div class="stat-card"><b>5</b><span><span data-vi>Khối vận hành</span><span data-en>Operating Blocks</span></span></div>
+    </div>
+  </div>
+  <p class="note" style="max-width:var(--maxw); margin:32px auto 0; padding:0 24px;"><span data-vi>* Hình ảnh minh họa tạm thời — sẽ thay bằng ảnh thật của đội ngũ, dự án và văn phòng trước khi ra mắt chính thức</span><span data-en>* Temporary stock photography — to be replaced with real team, project, and office photos before launch</span></p>
+</section>
+
+<section class="soft" id="ecosystem">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag"><span data-vi>Hệ sinh thái</span><span data-en>Ecosystem</span></span>
+      <h2><span data-vi>Tâm Doanh Group & Các đối tác chiến lược</span><span data-en>Tâm Doanh Group & Strategic Partners</span></h2>
+      <p><span data-vi>20 đơn vị chuyên trách tổ chức theo 5 khối vận hành, cùng các đối tác chiến lược trong kết nối đầu tư và kiểm toán độc lập.</span><span data-en>20 specialized units organized across 5 operating blocks, alongside strategic partners for investment connections and independent audit.</span></p>
+    </div>
+    <div class="ecosystem-photo"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1400&q=70" alt="" onerror="this.parentElement.style.display='none';"></div>
+    <div class="pillars">
+      <div class="pillar-card">
+        <div class="logo-slot">
+          <img src="assets/logos/crown-audit-advisory.png" alt="Crown Audit & Advisory logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="logo-fallback"><span class="plus">+</span><span class="txt"><span data-vi>Logo</span><span data-en>Logo</span></span></div>
+        </div>
+        <span class="role"><span data-vi>Kiểm toán & Tư vấn độc lập</span><span data-en>Independent Audit & Advisory</span></span>
+        <h3>Crown Audit &amp; Advisory</h3>
+        <p><span data-vi>Đối tác kiểm toán độc lập, đảm bảo tính minh bạch và tuân thủ cho báo cáo tài chính, đồng hành thẩm định trong các thương vụ gọi vốn.</span><span data-en>Independent audit partner ensuring transparency and compliance in financial reporting, and supporting due diligence in fundraising deals.</span></p>
+      </div>
+      <div class="pillar-card">
+        <div class="logo-slot">
+          <img src="assets/logos/tamdoanh-group.png" alt="Tâm Doanh Group logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="logo-fallback"><span class="plus">+</span><span class="txt"><span data-vi>Logo</span><span data-en>Logo</span></span></div>
+        </div>
+        <span class="role"><span data-vi>Tư vấn chuẩn hóa</span><span data-en>Standardization Advisory</span></span>
+        <h3>Tâm Doanh Group</h3>
+        <p><span data-vi>Tư vấn chuẩn hóa doanh nghiệp toàn diện — chiến lược, vận hành, nhân sự, pháp lý và nhiều lĩnh vực khác thông qua 20 đơn vị chuyên trách, tổ chức theo mô hình 5 khối (0 → 4).</span><span data-en>Comprehensive corporate standardization consulting — strategy, operations, HR, legal and more, delivered through 20 specialized units organized across a 5-block model (0 → 4).</span></p>
+      </div>
+      <div class="pillar-card">
+        <div class="logo-slot">
+          <img src="assets/logos/koru-capital.png" alt="Koru Capital logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="logo-fallback"><span class="plus">+</span><span class="txt"><span data-vi>Logo</span><span data-en>Logo</span></span></div>
+        </div>
+        <span class="role"><span data-vi>Kết nối đầu tư</span><span data-en>Investment Connection</span></span>
+        <h3>Koru Capital</h3>
+        <p><span data-vi>Kết nối doanh nghiệp với các quỹ đầu tư và nhà đầu tư trong nước và quốc tế, mở đường cho các cơ hội huy động vốn.</span><span data-en>Connecting businesses with domestic and international investors and funds, opening pathways to capital-raising opportunities.</span></p>
+      </div>
+    </div>
+    <p class="note"><span data-vi>* Ô viền đứt nét là nơi đặt logo — xem hướng dẫn tên file trong tài liệu kế hoạch nội dung</span><span data-en>* Dashed boxes are logo placeholders — see the file-naming guide in the content plan document</span></p>
+  </div>
+</section>
+
+<section class="soft" id="journey">
+  <div class="wrap">
+    <div class="journey-intro">
+      <span class="tag" style="font-size:13px; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:.05em;"><span data-vi>Hành trình dịch vụ</span><span data-en>The Service Journey</span></span>
+      <h2 style="font-size:30px; color:var(--navy); font-weight:800; margin:10px 0 12px;">
+        <span data-vi>Từ SME tiềm năng đến Doanh nghiệp lớn, bài bản, vững vàng</span>
+        <span data-en>From a Promising SME to a Large, Professional, Resilient Enterprise</span>
+      </h2>
+      <p style="color:var(--muted); font-size:16px; margin:0;">
+        <span data-vi>Toàn bộ dịch vụ của hệ sinh thái Tâm Doanh được thiết kế cho một mục tiêu duy nhất: đưa doanh nghiệp bạn từ tiềm năng đến bài bản, vững vàng.</span>
+        <span data-en>Every service across the ecosystem is built for one goal: taking your business from potential to professional and resilient.</span>
+      </p>
+    </div>
+
+    <div class="flow-grid">
+      <div class="flow-cell bookend">
+        <div class="flow-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 4 13V6a1 1 0 0 1 1-1h6a7 7 0 0 1 7 7v1a7 7 0 0 1-7 7z"></path><path d="M4 13c3.5-3.5 7-4 11-4"></path></svg></div>
+        <h4><span data-vi>DN SME tiềm năng</span><span data-en>A Promising SME</span></h4>
+        <p class="stop-caption"><span data-vi>Thiếu hệ thống, khó mở rộng</span><span data-en>No systems, hard to scale</span></p>
+      </div>
+      <div class="flow-cell">
+        <div class="flow-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg><span class="step-num">1</span></div>
+        <h4><span data-vi>Đánh giá toàn diện</span><span data-en>Comprehensive Assessment</span></h4>
+        <p class="stop-caption"><span data-vi>Biết mình đang ở đâu</span><span data-en>Know where you stand</span></p>
+      </div>
+      <div class="flow-cell">
+        <div class="flow-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg><span class="step-num">2</span></div>
+        <h4><span data-vi>Định hướng chiến lược</span><span data-en>Strategic Realignment</span></h4>
+        <p class="stop-caption"><span data-vi>Xác định đích đến</span><span data-en>Define your destination</span></p>
+      </div>
+      <div class="flow-cell">
+        <div class="flow-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg><span class="step-num">3</span></div>
+        <h4><span data-vi>Chuẩn hóa vận hành</span><span data-en>Operational Standardization</span></h4>
+        <p class="stop-caption"><span data-vi>Xây nền móng bài bản</span><span data-en>Build a solid foundation</span></p>
+      </div>
+      <div class="flow-turn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="19 12 12 19 5 12"></polyline><line x1="12" y1="19" x2="12" y2="5"></line></svg></div>
+      <div class="flow-cell">
+        <div class="flow-icon dot-dual"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 4 13V6a1 1 0 0 1 1-1h6a7 7 0 0 1 7 7v1a7 7 0 0 1-7 7z"></path><path d="M4 13c3.5-3.5 7-4 11-4"></path></svg><span class="step-num">4</span></div>
+        <h4><span data-vi>Chuyển đổi số &amp; xanh</span><span data-en>Digital &amp; Green Transformation</span></h4>
+        <p class="stop-caption"><span data-vi>Nâng cấp toàn diện</span><span data-en>Comprehensive upgrade</span></p>
+      </div>
+      <div class="flow-cell">
+        <div class="flow-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg><span class="step-num">5</span></div>
+        <h4><span data-vi>Tối ưu hoạt động</span><span data-en>Operational Optimization</span></h4>
+        <p class="stop-caption"><span data-vi>Tăng tốc &amp; mở rộng</span><span data-en>Accelerate &amp; expand</span></p>
+      </div>
+      <div class="flow-cell">
+        <div class="flow-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg><span class="step-num">6</span></div>
+        <h4><span data-vi>Tham gia thị trường vốn</span><span data-en>Capital Market Readiness</span></h4>
+        <p class="stop-caption"><span data-vi>Vươn tầm doanh nghiệp lớn</span><span data-en>Reach enterprise scale</span></p>
+      </div>
+      <div class="flow-cell bookend">
+        <div class="flow-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8"></path><path d="M12 17v4"></path><path d="M7 4h10v5a5 5 0 0 1-10 0V4z"></path><path d="M7 4H4a1 1 0 0 0-1 1v1a4 4 0 0 0 4 4"></path><path d="M17 4h3a1 1 0 0 1 1 1v1a4 4 0 0 1-4 4"></path></svg></div>
+        <h4><span data-vi>Doanh nghiệp lớn · Bài bản · Vững vàng</span><span data-en>Large · Professional · Resilient</span></h4>
+        <p class="stop-caption"><span data-vi>Sẵn sàng gọi vốn, cạnh tranh dài hạn</span><span data-en>Investment-ready, built to compete</span></p>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:36px;"><a href="/ecosystem-map.html" style="font-weight:700; color:var(--navy); text-decoration:underline;"><span data-vi>Xem bản đồ lộ trình 5 khối đầy đủ →</span><span data-en>View the full 5-block roadmap →</span></a></p>
+  </div>
+</section>
+
+<section id="members">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag"><span data-vi>Thành viên</span><span data-en>Members</span></span>
+      <h2><span data-vi>20 đơn vị thành viên Tâm Doanh Group</span><span data-en>20 Member Units of Tâm Doanh Group</span></h2>
+      <p><span data-vi>Mỗi thành viên có trang riêng, cung cấp giải pháp chuyên sâu theo từng lĩnh vực. Nhấn vào một khối để xem các thành viên.</span><span data-en>Each member has its own site offering in-depth solutions in its field. Click a block to see its members.</span></p>
+    </div>
+    <div class="group-tabs" id="group-tabs"></div>
+    <p class="group-hint"><span data-vi>↑ Nhấn vào một nhóm để xem thành viên ↑</span><span data-en>↑ Click a group to see its members ↑</span></p>
+    <div class="group-panel" id="group-panel"></div>
+    <p class="note"><span data-vi>* Ô vuông góc trên mỗi thẻ là nơi đặt logo từng thành viên — tên file gợi ý trùng với tiền tố subdomain (vd: strategy.png, training.png...)</span><span data-en>* The square in each card is a logo placeholder — suggested filenames match the subdomain prefix (e.g. strategy.png, training.png...)</span></p>
+  </div>
+</section>
+
+<section class="crownup-section" id="crownup">
+  <div class="wrap crownup-inner">
+    <div>
+      <span class="eyebrow-dark"><span data-vi>Chương trình đặc biệt</span><span data-en>Special Program</span></span>
+      <h2>Crown <span class="brand-up">Up</span></h2>
+      <p><span data-vi>Crown <span class="brand-up">Up</span> là đơn vị đặc biệt trong hệ sinh thái Tâm Doanh, vận hành theo mô hình một <strong>chương trình tăng tốc</strong> do Tâm Doanh Group trực tiếp chủ trì và điều phối — huy động cùng lúc các đơn vị chuyên môn trong hệ sinh thái, phối hợp cùng hai đối tác chiến lược Crown Audit &amp; Advisory và Koru Capital, để giúp doanh nghiệp SME chuyển mình thành doanh nghiệp lớn với quản trị chuẩn quốc tế, tài chính minh bạch và hồ sơ sẵn sàng gọi vốn.</span><span data-en>Crown <span class="brand-up">Up</span> is a distinct unit within the Tâm Doanh ecosystem, operating as an <strong>acceleration program</strong> directly chaired and coordinated by Tâm Doanh Group, mobilizing specialized units across the ecosystem alongside strategic partners Crown Audit &amp; Advisory and Koru Capital, to help SMEs transform into large enterprises with international-standard governance, transparent finances, and a fundraising-ready profile.</span></p>
+      <ul class="crownup-list">
+        <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><span><span data-vi>Quản trị doanh nghiệp hiện đại, minh bạch theo chuẩn quốc tế</span><span data-en>Modern, transparent governance built to international standards</span></span></li>
+        <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><span><span data-vi>Báo cáo tài chính được Crown Audit &amp; Advisory xác nhận</span><span data-en>Financial statements confirmed by Crown Audit &amp; Advisory</span></span></li>
+        <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg><span><span data-vi>Kết nối nguồn vốn quốc tế cùng Koru Capital</span><span data-en>International capital connections through Koru Capital</span></span></li>
+      </ul>
+      <p class="crownup-note"><span data-vi>* Crown <span class="brand-up">Up</span> là một trong 20 đơn vị thành viên chính thức của hệ sinh thái Tâm Doanh, thuộc Khối 0 — Đánh giá &amp; Hỗ trợ.</span><span data-en>* Crown <span class="brand-up">Up</span> is one of the 20 official member units of the Tâm Doanh ecosystem, within Block 0 — Assurance &amp; Support.</span></p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://crownup.tamdoanh.com" style="background:var(--orange); color:#fff;"><span data-vi>Khám phá Crown <span class="brand-up" style="color:#fff;">Up</span> →</span><span data-en>Explore Crown <span class="brand-up" style="color:#fff;">Up</span> →</span></a>
+      </div>
+    </div>
+    <div>
+      <div class="crownup-photo"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900&q=70" alt="" onerror="this.parentElement.style.display='none';"></div>
+      <div class="crownup-stats">
+        <div class="crownup-stat"><b>2</b><span><span data-vi>Đối tác chiến lược</span><span data-en>Strategic partners</span></span></div>
+        <div class="crownup-stat"><b>1</b><span><span data-vi>Chương trình tăng tốc</span><span data-en>Acceleration program</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="soft" id="team">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag"><span data-vi>Đội ngũ</span><span data-en>Our Team</span></span>
+      <h2><span data-vi>Đội ngũ chuyên gia dẫn dắt hệ sinh thái</span><span data-en>Expert Team Leading the Ecosystem</span></h2>
+      <p><span data-vi>Những con người giàu kinh nghiệm đứng sau từng giải pháp tư vấn.</span><span data-en>Experienced leaders behind every advisory solution.</span></p>
+    </div>
+    <div class="team-grid">
+      <div class="person-card">
+        <div class="avatar">NA<img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=70" alt="" onerror="this.remove();"></div>
+        <h4>Nguyễn Văn A</h4>
+        <span class="role"><span data-vi>Chủ tịch, Tâm Doanh Group</span><span data-en>Chairman, Tâm Doanh Group</span></span>
+        <p><span data-vi>15+ năm tư vấn chiến lược & quản trị doanh nghiệp</span><span data-en>15+ years in strategy consulting & corporate governance</span></p>
+      </div>
+      <div class="person-card">
+        <div class="avatar">TB<img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=70" alt="" onerror="this.remove();"></div>
+        <h4>Trần Thị B</h4>
+        <span class="role"><span data-vi>Giám đốc, Crown <span class="brand-up">Up</span></span><span data-en>Director, Crown <span class="brand-up">Up</span></span></span>
+        <p><span data-vi>Chuyên gia kiểm toán & tuân thủ, CPA</span><span data-en>Audit & compliance expert, CPA</span></p>
+      </div>
+      <div class="person-card">
+        <div class="avatar">LC<img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=70" alt="" onerror="this.remove();"></div>
+        <h4>Lê Văn C</h4>
+        <span class="role"><span data-vi>Giám đốc, Koru Capital</span><span data-en>Director, Koru Capital</span></span>
+        <p><span data-vi>Chuyên gia kết nối đầu tư & gọi vốn</span><span data-en>Investment connection & fundraising expert</span></p>
+      </div>
+      <div class="person-card">
+        <div class="avatar">PD<img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=70" alt="" onerror="this.remove();"></div>
+        <h4>Phạm Thị D</h4>
+        <span class="role"><span data-vi>Trưởng phòng, Strategy Hub</span><span data-en>Head of Strategy Hub</span></span>
+        <p><span data-vi>Chuyên gia tái cấu trúc vận hành doanh nghiệp</span><span data-en>Operational restructuring expert</span></p>
+      </div>
+    </div>
+    <p class="note"><span data-vi>* Thông tin minh họa — thay bằng đội ngũ thật của bạn</span><span data-en>* Placeholder information — replace with your real team</span></p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag"><span data-vi>Dự án tiêu biểu</span><span data-en>Featured Projects</span></span>
+      <h2><span data-vi>Kết quả thực tế từ các dự án tư vấn</span><span data-en>Real Results From Advisory Projects</span></h2>
+      <p><span data-vi>Một số dự án minh họa cách các thành viên trong hệ sinh thái phối hợp giải quyết bài toán cho khách hàng.</span><span data-en>Example projects showing how ecosystem members collaborate to solve client challenges.</span></p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-thumb p1"><svg class="thumb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4l-6 4Z"></path><path d="M17 18h1"></path><path d="M12 18h1"></path><path d="M7 18h1"></path></svg><img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=700&q=70" alt="" onerror="this.style.display='none';"></div>
+        <div class="project-body">
+          <span class="project-tag"><span data-vi>Ngành Sản xuất</span><span data-en>Manufacturing</span></span>
+          <h4><span data-vi>Chuẩn hóa vận hành cho doanh nghiệp sản xuất 200+ nhân sự</span><span data-en>Operational Standardization for a 200+ Employee Manufacturer</span></h4>
+          <p><span data-vi>Strategy Hub & QSM đồng hành tái thiết kế quy trình sản xuất và hệ thống quản lý chất lượng.</span><span data-en>Strategy Hub & QSM redesigned production processes and the quality management system.</span></p>
+          <div class="project-stat"><b><span data-vi>+35% hiệu suất vận hành</span><span data-en>+35% operational efficiency</span></b><span><span data-vi>Sau 6 tháng triển khai</span><span data-en>Within 6 months of implementation</span></span></div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb p2"><svg class="thumb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=700&q=70" alt="" onerror="this.style.display='none';"></div>
+        <div class="project-body">
+          <span class="project-tag"><span data-vi>Ngành Bán lẻ</span><span data-en>Retail</span></span>
+          <h4><span data-vi>Tái cấu trúc tài chính & gọi vốn mở rộng chuỗi cửa hàng</span><span data-en>Financial Restructuring & Fundraising for Retail Chain Expansion</span></h4>
+          <p><span data-vi>Capital Solutions và Koru Capital hỗ trợ kết nối nhà đầu tư và tối ưu cấu trúc vốn.</span><span data-en>Capital Solutions and Koru Capital supported investor connections and capital structure optimization.</span></p>
+          <div class="project-stat"><b><span data-vi>Huy động thành công vòng vốn</span><span data-en>Successfully closed a funding round</span></b><span><span data-vi>Mở rộng thêm 15 cửa hàng</span><span data-en>Expanded to 15 more stores</span></span></div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb p3"><svg class="thumb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg><img src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=700&q=70" alt="" onerror="this.style.display='none';"></div>
+        <div class="project-body">
+          <span class="project-tag"><span data-vi>Ngành Xuất khẩu</span><span data-en>Export</span></span>
+          <h4><span data-vi>Tuân thủ pháp lý & mở rộng thị trường xuất khẩu</span><span data-en>Legal Compliance & Export Market Expansion</span></h4>
+          <p><span data-vi>Legal & Compliance cùng Export & Trade hoàn thiện hồ sơ pháp lý và chiến lược thâm nhập thị trường mới.</span><span data-en>Legal & Compliance and Export & Trade supported legal documentation and new market entry strategy.</span></p>
+          <div class="project-stat"><b><span data-vi>Mở rộng sang 3 thị trường mới</span><span data-en>Expanded into 3 new markets</span></b><span><span data-vi>Trong vòng 12 tháng</span><span data-en>Within 12 months</span></span></div>
+        </div>
+      </div>
+    </div>
+    <p class="note"><span data-vi>* Số liệu minh họa — sẽ thay bằng dự án thực tế của bạn</span><span data-en>* Placeholder figures — replace with your real projects</span></p>
+  </div>
+</section>
+
+<section class="soft" id="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag"><span data-vi>Đánh giá từ khách hàng</span><span data-en>Client Testimonials</span></span>
+      <h2><span data-vi>Doanh nghiệp nói về chúng tôi</span><span data-en>What Businesses Say About Us</span></h2>
+      <p><span data-vi>Những chia sẻ từ doanh nghiệp đã đồng hành cùng hệ sinh thái Tâm Doanh.</span><span data-en>Feedback from businesses that have partnered with the Tâm Doanh ecosystem.</span></p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">
+          <span data-vi>"Đội ngũ Tâm Doanh giúp chúng tôi chuẩn hóa toàn bộ quy trình vận hành chỉ trong vài tháng, hiệu quả thấy rõ ngay từ quý đầu tiên."</span>
+          <span data-en>"The Tâm Doanh team helped us standardize our entire operating process in just a few months, with results visible from the first quarter."</span>
+        </p>
+        <div class="testimonial-person">
+          <div class="avatar">GĐ<img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=140&q=70" alt="" onerror="this.remove();"></div>
+          <div>
+            <h5><span data-vi>Giám đốc Vận hành</span><span data-en>Operations Director</span></h5>
+            <span><span data-vi>Công ty CP Sản xuất ABC</span><span data-en>ABC Manufacturing JSC</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">
+          <span data-vi>"Nhờ kết nối từ Koru Capital, chúng tôi tiếp cận đúng nhà đầu tư phù hợp với giai đoạn phát triển của mình."</span>
+          <span data-en>"Thanks to Koru Capital's connections, we reached the right investors for our stage of growth."</span>
+        </p>
+        <div class="testimonial-person">
+          <div class="avatar">NS<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=140&q=70" alt="" onerror="this.remove();"></div>
+          <div>
+            <h5><span data-vi>Nhà sáng lập</span><span data-en>Founder</span></h5>
+            <span><span data-vi>Công ty TNHH Bán lẻ XYZ</span><span data-en>XYZ Retail Co., Ltd.</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">
+          <span data-vi>"Crown <span class="brand-up">Up</span> luôn đồng hành sát sao, giúp chúng tôi yên tâm về tính tuân thủ khi mở rộng ra thị trường mới."</span>
+          <span data-en>"Crown <span class="brand-up">Up</span> stayed closely engaged, giving us confidence in our compliance as we expanded into new markets."</span>
+        </p>
+        <div class="testimonial-person">
+          <div class="avatar">GĐ<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=140&q=70" alt="" onerror="this.remove();"></div>
+          <div>
+            <h5><span data-vi>Giám đốc Tài chính</span><span data-en>CFO</span></h5>
+            <span><span data-vi>Công ty Xuất khẩu MNO</span><span data-en>MNO Export Co.</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="note"><span data-vi>* Nội dung minh họa — thay bằng phản hồi thật từ khách hàng của bạn</span><span data-en>* Placeholder content — replace with real feedback from your clients</span></p>
+  </div>
+</section>
+
+<section id="news">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag"><span data-vi>Tin tức & Góc nhìn</span><span data-en>News &amp; Insights</span></span>
+      <h2><span data-vi>Quản trị doanh nghiệp & Thu hút đầu tư</span><span data-en>Governance &amp; Investment Attraction</span></h2>
+    </div>
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-thumb"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=700&q=70" alt="" onerror="this.style.display='none';"></div>
+        <div class="news-body">
+          <span class="news-cat"><span data-vi>Quản trị doanh nghiệp</span><span data-en>Corporate Governance</span></span>
+          <h4><span data-vi>5 nguyên tắc chuẩn hóa vận hành cho doanh nghiệp vừa và nhỏ</span><span data-en>5 Operational Standardization Principles for SMEs</span></h4>
+          <p><span data-vi>Góc nhìn từ đội ngũ Tâm Doanh Strategy Hub về lộ trình chuẩn hóa bền vững.</span><span data-en>Insights from the Tâm Doanh Strategy Hub team on a sustainable standardization roadmap.</span></p>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-thumb"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=700&q=70" alt="" onerror="this.style.display='none';"></div>
+        <div class="news-body">
+          <span class="news-cat"><span data-vi>Thu hút đầu tư</span><span data-en>Investment Attraction</span></span>
+          <h4><span data-vi>Doanh nghiệp cần chuẩn bị gì trước khi gọi vốn?</span><span data-en>What Should Businesses Prepare Before Fundraising?</span></h4>
+          <p><span data-vi>Koru Capital chia sẻ những tiêu chí nhà đầu tư quan tâm hàng đầu.</span><span data-en>Koru Capital shares the top criteria investors look for.</span></p>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-thumb"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=700&q=70" alt="" onerror="this.style.display='none';"></div>
+        <div class="news-body">
+          <span class="news-cat"><span data-vi>Tin hệ sinh thái</span><span data-en>Ecosystem News</span></span>
+          <h4><span data-vi>Crown <span class="brand-up">Up</span> mở rộng dịch vụ đánh giá tuân thủ ESG</span><span data-en>Crown <span class="brand-up">Up</span> Expands ESG Compliance Services</span></h4>
+          <p><span data-vi>Đáp ứng nhu cầu ngày càng tăng về minh bạch và phát triển bền vững.</span><span data-en>Meeting growing demand for transparency and sustainable development.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="soft">
+  <div class="wrap">
+    <div class="cta-band">
+      <img class="cta-band-photo" src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=1400&q=70" alt="" onerror="this.style.display='none';">
+      <div>
+        <h3><span data-vi>Tìm hiểu thêm trước khi quyết định</span><span data-en>Learn More Before You Decide</span></h3>
+        <p><span data-vi>Đọc các phân tích chuyên sâu trên Tâm Doanh Insight, hoặc làm bài đánh giá miễn phí để biết doanh nghiệp bạn nên bắt đầu từ đâu.</span><span data-en>Read in-depth analysis on Tâm Doanh Insight, or take the free assessment to see where your business should start.</span></p>
+      </div>
+      <a class="btn btn-primary" href="insight.html"><span data-vi>Đọc Tâm Doanh Insight</span><span data-en>Read Tâm Doanh Insight</span></a>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo-slot foot-logo-slot">
+          <img src="assets/logos/tamdoanh-group.png" alt="Tâm Doanh Group logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="logo-fallback"><span class="plus">+</span><span class="txt"><span data-vi>Logo</span><span data-en>Logo</span></span></div>
+        </div>
+        <ul>
+          <li style="color:#fff; font-weight:700;"><span data-vi>Công ty TNHH Tâm Doanh Group</span><span data-en>Tam Doanh Group Co., Ltd.</span></li>
+          <li style="margin-top:8px; color:#fff; font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:.03em;"><span data-vi>VP Hà Nội</span><span data-en>Hanoi Office</span></li>
+          <li><span data-vi>Tầng 7, Số 18 Ngụy Như Kon Tum, Phường Thanh Xuân, TP. Hà Nội</span><span data-en>7th Floor, 18 Nguy Nhu Kon Tum Street, Thanh Xuan Ward, Hanoi</span></li>
+          <li><span data-vi>Điện thoại:</span><span data-en>Phone:</span> <a href="tel:0584252999">0584.252.999</a></li>
+          <li style="margin-top:8px; color:#fff; font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:.03em;"><span data-vi>VP TP. Hồ Chí Minh</span><span data-en>Ho Chi Minh City Office</span></li>
+          <li><span data-vi>13 Đường N2, KDC Jamona Golden Silk, 16/9 Bùi Văn Ba, Khu phố 10, Phường Tân Thuận, TP. Hồ Chí Minh</span><span data-en>13 N2 Street, Jamona Golden Silk Residential Area, 16/9 Bui Van Ba, Khu Pho 10, Tan Thuan Ward, Ho Chi Minh City</span></li>
+          <li><span data-vi>Điện thoại:</span><span data-en>Phone:</span> <a href="tel:0862231919">086 223 1919</a></li>
+          <li style="margin-top:8px;">info@tamdoanh.com</li>
+        </ul>
+      </div>
+      <div>
+        <h5><span data-vi>Hệ sinh thái</span><span data-en>Ecosystem</span></h5>
+        <ul>
+          <li><a href="#">Tâm Doanh Group</a></li>
+          <li><a href="/ecosystem-map.html"><span data-vi>Bản đồ 5 khối</span><span data-en>5-Block Map</span></a></li>
+          <li><a href="#">Koru Capital</a></li>
+          <li><a href="#">Crown Audit &amp; Advisory</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5><span data-vi>Khám phá</span><span data-en>Explore</span></h5>
+        <ul>
+          <li><a href="#about"><span data-vi>Giới thiệu</span><span data-en>About Us</span></a></li>
+          <li><a href="/company"><span data-vi>Câu chuyện & Tầm nhìn</span><span data-en>Our Story & Vision</span></a></li>
+          <li><a href="#journey"><span data-vi>Hành trình dịch vụ</span><span data-en>Service Journey</span></a></li>
+          <li><a href="#team"><span data-vi>Đội ngũ chuyên gia</span><span data-en>Expert Team</span></a></li>
+          <li><a href="#projects"><span data-vi>Dự án tiêu biểu</span><span data-en>Featured Projects</span></a></li>
+          <li><a href="#testimonials"><span data-vi>Đánh giá khách hàng</span><span data-en>Testimonials</span></a></li>
+          <li><a href="/experts"><span data-vi>Gia nhập đội ngũ chuyên gia</span><span data-en>Join Our Expert Network</span></a></li>
+          <li><a href="/community"><span data-vi>Dự án cộng đồng</span><span data-en>Community Projects</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Tâm Doanh Group. <span data-vi>Bảo lưu mọi quyền.</span><span data-en>All rights reserved.</span></span>
+      <span><span data-vi>Bản dựng demo — nội dung minh họa</span><span data-en>Demo build — placeholder content</span></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const members = [
+    {vi:"Tâm Doanh Assessment", desc_vi:"Đánh giá & đo lường sức khỏe doanh nghiệp bằng bộ công cụ định lượng (TD Scanner, TD Index)", desc_en:"Diagnosing business health with proprietary quantitative tools (TD Scanner, TD Index)", domain:"assessment.tamdoanh.com", group:"khoi-0"},
+    {vi:"Crown Up", desc_vi:"Chương trình tăng tốc quy tụ các đơn vị chuyên môn & đối tác chiến lược", desc_en:"Acceleration program uniting specialized units & strategic partners", domain:"crownup.tamdoanh.com", group:"khoi-0"},
+    {vi:"Tâm Doanh Institute of Business Excellence (TDIBE)", desc_vi:"Nghiên cứu, phương pháp luận, đào tạo & quản trị tri thức doanh nghiệp", desc_en:"Research, methodology, training & corporate knowledge management", domain:"tdibe.tamdoanh.com", group:"khoi-0"},
+    {vi:"Tâm Doanh PM", desc_vi:"Tư vấn & quản lý dự án cho doanh nghiệp", desc_en:"Project management advisory for businesses", domain:"pm.tamdoanh.com", group:"khoi-0"},
+    {vi:"Tâm Doanh Zero", desc_vi:"Lớp tư duy hệ thống nguyên bản, điều phối trí tuệ xuyên suốt hệ sinh thái", desc_en:"Original systems-thinking layer, coordinating intelligence across the ecosystem", domain:"zero.tamdoanh.com", group:"khoi-1"},
+    {vi:"Tâm Doanh Strategy Hub", desc_vi:"Tư vấn chiến lược & tái cấu trúc doanh nghiệp", desc_en:"Strategy consulting & corporate restructuring", domain:"strategy.tamdoanh.com", group:"khoi-1"},
+    {vi:"Tâm Doanh Public Service", desc_vi:"Tư vấn chính sách & quy hoạch cho khu vực nhà nước", desc_en:"Policy advisory & planning for government bodies", domain:"public.tamdoanh.com", group:"khoi-1"},
+    {vi:"Tâm Doanh Career Advisory", desc_vi:"Tư vấn nghề nghiệp & lộ trình học tập cho thế hệ kế thừa", desc_en:"Career advisory & learning pathways for the next generation", domain:"career.tamdoanh.com", group:"khoi-1"},
+    {vi:"Tâm Doanh Human Capital", desc_vi:"Tư vấn nhân sự & phát triển nguồn nhân lực", desc_en:"HR & organizational development", domain:"hr.tamdoanh.com", group:"khoi-2"},
+    {vi:"Tâm Doanh Accounting Advisory", desc_vi:"Dịch vụ kế toán, thuế trọn gói", desc_en:"Accounting & tax services", domain:"accounting.tamdoanh.com", group:"khoi-2"},
+    {vi:"Tâm Doanh Legal & Compliance", desc_vi:"Tư vấn pháp lý & tuân thủ doanh nghiệp", desc_en:"Legal & regulatory compliance advisory", domain:"legal.tamdoanh.com", group:"khoi-2"},
+    {vi:"Tâm Doanh QSM", desc_vi:"Quản lý hệ thống chất lượng (ISO & tiêu chuẩn)", desc_en:"Quality System Management (ISO & standards)", domain:"qsm.tamdoanh.com", group:"khoi-2"},
+    {vi:"Tâm Doanh OPEX", desc_vi:"Tư vấn tối ưu vận hành & cắt giảm chi phí", desc_en:"Operational excellence & cost optimization consulting", domain:"opex.tamdoanh.com", group:"khoi-3"},
+    {vi:"Tâm Doanh Digital & Solutions", desc_vi:"Chuyển đổi số & giải pháp công nghệ", desc_en:"Digital transformation & technology solutions", domain:"digital.tamdoanh.com", group:"khoi-3"},
+    {vi:"Tâm Doanh Branding & Marketing", desc_vi:"Xây dựng thương hiệu & marketing", desc_en:"Branding & marketing", domain:"mkt.tamdoanh.com", group:"khoi-3"},
+    {vi:"Tâm Doanh Growth", desc_vi:"Phát triển mạng lưới kinh doanh & đội ngũ sales cho khách hàng", desc_en:"Business network development & sales team building for clients", domain:"growth.tamdoanh.com", group:"khoi-3"},
+    {vi:"Tâm Doanh Export & Trade", desc_vi:"Tư vấn xuất nhập khẩu & thương mại quốc tế", desc_en:"Export & international trade advisory", domain:"export.tamdoanh.com", group:"khoi-3"},
+    {vi:"Tâm Doanh Communication", desc_vi:"Quản trị truyền thông, uy tín doanh nghiệp & thương hiệu cá nhân lãnh đạo", desc_en:"Corporate communications, reputation management & executive personal branding", domain:"communication.tamdoanh.com", group:"khoi-3"},
+    {vi:"Tâm Doanh Capital Solutions", desc_vi:"Giải pháp tài chính, M&A & huy động vốn", desc_en:"Financial solutions, M&A & capital-raising", domain:"capital.tamdoanh.com", group:"khoi-4"},
+    {vi:"Tâm Doanh Sustainability", desc_vi:"Tư vấn phát triển bền vững & ESG", desc_en:"Sustainability & ESG advisory", domain:"esg.tamdoanh.com", group:"khoi-4"}
+  ];
+
+  const groups = [
+    {
+      id:"khoi-0", color:"#0b2545",
+      icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5.5 3.8 9.7 8 11 4.2-1.3 8-5.5 8-11V5l-8-3z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>',
+      vi:"Khối 0 — Đánh giá & Hỗ trợ", en:"Block 0 — Assurance & Support",
+      desc_vi:"Trạm kiểm định độc lập, nâng cao năng lực và điều phối thực thi — song hành xuyên suốt cả hành trình.", desc_en:"An independent checkpoint that builds capability and coordinates execution — running alongside the entire journey.",
+      note_vi:"Khối 0 không phải một giai đoạn riêng lẻ mà song hành cùng cả 4 khối còn lại, đảm bảo mọi bước đi đều dựa trên dữ liệu minh bạch, đáng tin cậy.",
+      note_en:"Block 0 is not a standalone stage — it runs alongside all 4 other blocks, ensuring every step is built on transparent, trustworthy data."
+    },
+    {
+      id:"khoi-1", color:"#0b2545",
+      icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>',
+      vi:"Khối 1 — Chiến lược", en:"Block 1 — Strategic Foundation",
+      desc_vi:"Định hình tầm nhìn, mô hình và hướng đi cấp cao cho Tổ chức, Khối công & Cá nhân.", desc_en:"Shaping vision, model, and high-level direction for enterprises, government, and individuals."
+    },
+    {
+      id:"khoi-2", color:"#0b2545",
+      icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>',
+      vi:"Khối 2 — Nền tảng Bước đầu", en:"Block 2 — Governance & Initial Core",
+      desc_vi:"Dựng nền tảng về cơ cấu bộ máy, tài chính nội bộ, pháp chế và quy trình chuẩn hóa.", desc_en:"Laying the foundation for organizational structure, internal finance, legal, and standardized processes."
+    },
+    {
+      id:"khoi-3", color:"#0b2545",
+      icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>',
+      vi:"Khối 3 — Nền tảng Vươn tầm", en:"Block 3 — Scaling, Digital & Trade Core",
+      desc_vi:"Tối ưu vận hành, bứt phá doanh thu, chuyển đổi số và kết nối xuất nhập khẩu để mở rộng quy mô.", desc_en:"Optimizing operations, driving revenue breakthroughs, going digital, and connecting trade to scale up."
+    },
+    {
+      id:"khoi-4", color:"#0b2545",
+      icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>',
+      vi:"Khối 4 — Hội nhập & Chinh phục", en:"Block 4 — Capital & Global Impact",
+      desc_vi:"Cấu trúc tài chính, thu hút nguồn lực vốn và chinh phục các chuẩn mực bền vững toàn cầu.", desc_en:"Structuring capital, attracting resources, and meeting global sustainability standards."
+    }
+  ];
+
+  function brandName(vi){
+    return vi === 'Crown Up' ? 'Crown <span class="brand-up">Up</span>' : vi;
+  }
+
+  function memberCardHTML(m){
+    const slug = m.domain.split('.')[0];
+    return `
+      <a class="member-card" href="https://${m.domain}">
+        <div class="logo-slot">
+          <img src="assets/logos/${slug}.png" alt="${m.vi} logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="logo-fallback"><span class="plus">+</span><span class="txt"><span data-vi>Logo</span><span data-en>Logo</span></span></div>
+        </div>
+        <div class="card-content">
+          <h4>${brandName(m.vi)}</h4>
+          <p><span data-vi>${m.desc_vi}</span><span data-en>${m.desc_en}</span></p>
+          <div class="foot">
+            <span class="domain"><span data-vi>Xem chi tiết</span><span data-en>Learn more</span></span>
+            <span class="arrow">→</span>
+          </div>
+        </div>
+      </a>
+    `;
+  }
+
+  function buildSwitcherMenu(){
+    const menuEl = document.getElementById('switcher-menu');
+    if (!menuEl) return;
+    let html = `<a href="/ecosystem-map.html"><span data-vi>Bản đồ 5 khối →</span><span data-en>5-Block Map →</span></a><div class="switcher-divider"></div>`;
+    groups.forEach(g => {
+      const groupMembers = members.filter(m => m.group === g.id);
+      if (!groupMembers.length) return;
+      html += `<div class="switcher-group-label"><span data-vi>${g.vi}</span><span data-en>${g.en}</span></div>`;
+      groupMembers.forEach(m => {
+        html += `<a href="https://${m.domain}">${brandName(m.vi)}</a>`;
+      });
+    });
+    menuEl.innerHTML = html;
+  }
+  buildSwitcherMenu();
+
+  const tabsEl = document.getElementById('group-tabs');
+  const panelEl = document.getElementById('group-panel');
+  let activeGroup = null;
+
+  groups.forEach(g=>{
+    const count = members.filter(m => m.group === g.id).length;
+    const tile = document.createElement('button');
+    tile.type = 'button';
+    tile.className = 'group-tile' + (g.id === 'khoi-0' ? ' specialized' : '');
+    tile.dataset.group = g.id;
+    tile.style.setProperty('--gc', g.color);
+    tile.innerHTML = `
+      <span class="group-icon">${g.icon}</span>
+      <span class="group-name"><span data-vi>${g.vi}</span><span data-en>${g.en}</span></span>
+      <span class="group-count">${count} <span data-vi>đơn vị</span><span data-en>units</span></span>
+    `;
+    tile.addEventListener('click', () => selectGroup(g.id));
+    tabsEl.appendChild(tile);
+  });
+
+  function selectGroup(id){
+    const isSame = activeGroup === id;
+    activeGroup = isSame ? null : id;
+    tabsEl.querySelectorAll('.group-tile').forEach(t=>{
+      t.classList.toggle('active', t.dataset.group === activeGroup);
+    });
+    if (!activeGroup){
+      panelEl.innerHTML = '';
+      return;
+    }
+    const g = groups.find(x => x.id === activeGroup);
+    const groupMembers = members.filter(m => m.group === activeGroup);
+    panelEl.innerHTML = `
+      <div class="group-panel-inner" style="--gc:${g.color}">
+        <div class="group-panel-head">
+          <span class="group-icon">${g.icon}</span>
+          <div>
+            <h4><span data-vi>${g.vi}</span><span data-en>${g.en}</span></h4>
+            <p><span data-vi>${g.desc_vi}</span><span data-en>${g.desc_en}</span></p>
+          </div>
+        </div>
+        ${g.note_vi ? `<div class="group-panel-note"><span data-vi>${g.note_vi}</span><span data-en>${g.note_en}</span></div>` : ''}
+        <div class="members-grid">${groupMembers.map(memberCardHTML).join('')}</div>
+      </div>
+    `;
+  }
+
+  function setLang(lang){
+    document.body.classList.toggle('lang-en', lang === 'en');
+    document.getElementById('btn-vi').classList.toggle('active', lang === 'vi');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang;
+  }
+</script>
+
+</body>
+</html>
